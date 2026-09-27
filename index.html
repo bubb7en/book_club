@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>《美麗新世界》讀書會 主持人手冊</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#EFEBDE;
+    --surface:#FBF9F3;
+    --ink:#211F1B;
+    --sub:#6E6858;
+    --rule:#D9D2BE;
+    --s1:#8A3B53;
+    --s2:#4E6B4B;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#171613;
+      --surface:#1F1D19;
+      --ink:#EDE9DD;
+      --sub:#A79F8B;
+      --rule:#3A362C;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#171613;
+    --surface:#1F1D19;
+    --ink:#EDE9DD;
+    --sub:#A79F8B;
+    --rule:#3A362C;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-padding-top:env(safe-area-inset-top,0px);}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Source Serif 4","Noto Serif TC",serif;
+    font-size:17px;
+    line-height:1.75;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:calc(env(safe-area-inset-bottom,0px) + 40px);
+  }
+  .wrap{max-width:720px;margin:0 auto;padding:56px 24px 0;}
+  .mono{font-family:"IBM Plex Mono",ui-monospace,monospace;}
+  header.masthead{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:36px;}
+  .kicker{font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--sub);letter-spacing:.04em;margin-bottom:10px;}
+  h1{font-size:clamp(28px,5vw,40px);line-height:1.25;margin:0 0 12px;font-weight:700;}
+  .subtitle{color:var(--sub);font-size:16px;max-width:54ch;}
+  nav.toc{margin:32px 0 44px;padding:18px 20px;background:var(--surface);border:1px solid var(--rule);border-radius:2px;}
+  nav.toc p{margin:0 0 8px;font-family:"IBM Plex Mono";font-size:12px;color:var(--sub);}
+  nav.toc ol{margin:0;padding-left:20px;columns:2;column-gap:24px;}
+  nav.toc li{margin-bottom:6px;font-size:14px;}
+  nav.toc a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule);}
+  section{margin-bottom:48px;scroll-margin-top:24px;}
+  h2{font-size:21px;margin:0 0 6px;display:flex;align-items:baseline;gap:10px;}
+  h2 .num{font-family:"IBM Plex Mono";font-size:13px;color:var(--sub);font-weight:400;}
+  h3.day{
+    font-size:19px;margin:0 0 4px;padding:14px 18px;
+    background:var(--surface);border:1px solid var(--rule);
+    display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px;
+  }
+  h3.day .datebadge{font-family:"IBM Plex Mono";font-size:13px;color:#fff;padding:3px 10px;border-radius:2px;}
+  .day1 .datebadge{background:var(--s1);}
+  .day2 .datebadge{background:var(--s2);}
+  .lede{color:var(--sub);font-size:14.5px;margin:0 0 18px;max-width:58ch;}
+  p{margin:0 0 14px;max-width:64ch;}
+  .assume-box{background:var(--surface);border:1px solid var(--rule);border-left:3px solid var(--ink);padding:16px 18px;font-size:15px;}
+  .assume-box p{margin:0 0 8px;max-width:none;}
+  .assume-box p:last-child{margin-bottom:0;}
+  table.schedule{width:100%;border-collapse:collapse;font-size:14.5px;margin-top:16px;}
+  table.schedule th,table.schedule td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--rule);vertical-align:top;}
+  table.schedule th{font-family:"IBM Plex Mono";font-size:11px;color:var(--sub);font-weight:500;border-bottom:1px solid var(--ink);}
+  td.time{font-family:"IBM Plex Mono";font-size:13px;white-space:nowrap;color:var(--sub);}
+  tr.break td{background:var(--surface);font-style:italic;color:var(--sub);}
+  .block{margin:22px 0;padding-left:16px;border-left:3px solid var(--rule);}
+  .block.recap{border-left-style:dashed;}
+  .blocktag{font-family:"IBM Plex Mono";font-size:11px;color:var(--sub);margin-bottom:6px;display:flex;gap:8px;align-items:baseline;}
+  .blocktag .when{color:var(--ink);}
+  .block h4{margin:0 0 8px;font-size:17px;}
+  .block ul{margin:8px 0 0;padding-left:20px;}
+  .block li{margin-bottom:6px;font-size:15.5px;}
+  .discuss{border-left-color:var(--accent,var(--ink));}
+  .discuss h4{color:var(--ink);}
+  .day1 .discuss{--accent:var(--s1);}
+  .day2 .discuss{--accent:var(--s2);}
+  .tip-list{padding-left:0;list-style:none;margin:0;}
+  .tip-list li{padding:12px 0;border-bottom:1px solid var(--rule);font-size:15px;}
+  .tip-list li:last-child{border-bottom:none;}
+  .tip-list b{display:block;font-size:14.5px;margin-bottom:3px;}
+  .read-list{padding-left:20px;}
+  .read-list li{margin-bottom:8px;}
+  footer{border-top:1px solid var(--rule);margin-top:20px;padding:20px 0 4px;color:var(--sub);font-size:13px;font-family:"IBM Plex Mono";}
+  @media (max-width:520px){nav.toc ol{columns:1;}.wrap{padding:36px 18px 0;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="kicker">讀書會工具 · 主持人手冊</div>
+    <h1>《美麗新世界》<br>Brave New World</h1>
+    <p class="subtitle">兩場聚會、六段導讀、六個議題——依實際流程整理好的主持人引導手冊。</p>
+  </header>
+
+  <nav class="toc">
+    <p>目錄</p>
+    <ol>
+      <li><a href="#assume">總覽與使用說明</a></li>
+      <li><a href="#background">作者與作品背景</a></li>
+      <li><a href="#day1">第一場 10/2</a></li>
+      <li><a href="#day2">第二場 10/16</a></li>
+      <li><a href="#tips">主持人小提醒</a></li>
+      <li><a href="#further">延伸閱讀與資源</a></li>
+    </ol>
+  </nav>
+
+  <section id="assume">
+    <h2><span class="num">00</span>總覽與使用說明</h2>
+    <div class="assume-box">
+      <p>全書 18 章,分兩場聚會、每場三個「導讀 + 議題討論」單元讀完:10/2 涵蓋第 1–9 章,10/16 涵蓋第 10–18 章。每個導讀約 10 分鐘,由主持人簡述劇情重點、不需要逐字複述文本;每個議題討論約 15 分鐘,緊接在對應章節之後,讓大家趁記憶新鮮時討論。</p>
+      <p>六個議題的順序,是刻意順著小說本身的推進安排的:從世界國的體制設計,到個體的格格不入,到文明與野蠻的對照,到名氣與表演,到愛與死亡的代價,最後收在全書核心的自由與穩定之辯。</p>
+      <p><b>分工:</b>每段「導讀」由導讀人負責,內容由導讀人自行準備,手冊裡列的重點僅供對照、方便彼此銜接。主持人在導讀時段不需要講解劇情,只要負責報時、介紹導讀人上場、導讀結束後銜接進討論;主持人真正的工作,是在六段「議題討論」裡拋問題、控場、確保每個人都有機會說話。</p>
+    </div>
+  </section>
+
+  <section id="background">
+    <h2><span class="num">01</span>作者與作品背景</h2>
+    <p>阿道斯·赫胥黎(Aldous Huxley)於 1932 年出版《美麗新世界》,設定在一個以「穩定」與「快樂」為最高價值的世界國:人類在瓶中被培育、分入五個種姓,靠藥物 soma 消除一切不快,靠制約教育與睡眠學習塑造慾望。與常被相提並論的《1984》不同,赫胥黎想像的極權不靠恐懼統治,而是靠滿足與娛樂讓人自願放棄自由。開場時可以簡短提到這一點,幫助大家帶著「這是哪一種反烏托邦」的視角進入討論。</p>
+  </section>
+
+  <section id="day1" class="day1">
+    <h3 class="day"><span>第一場 · 第 1–9 章</span><span class="datebadge">10/2</span></h3>
+
+    <table class="schedule">
+      <tr><th>時間</th><th>環節</th></tr>
+      <tr><td class="time">18:50–19:00</td><td>入場</td></tr>
+      <tr><td class="time">19:05–19:10</td><td>開場</td></tr>
+      <tr><td class="time">19:15–19:25</td><td>導讀人分享:第一至三章</td></tr>
+      <tr><td class="time">19:25–19:40</td><td>議題一討論</td></tr>
+      <tr><td class="time">19:45–19:55</td><td>導讀人分享:第四至六章</td></tr>
+      <tr class="break"><td class="time">19:55–20:00</td><td>中場休息</td></tr>
+      <tr><td class="time">20:00–20:15</td><td>議題二討論</td></tr>
+      <tr><td class="time">20:15–20:25</td><td>導讀人分享:第七至九章</td></tr>
+      <tr><td class="time">20:25–20:40</td><td>議題三討論</td></tr>
+      <tr><td class="time">20:40–21:00</td><td>自由交流與收尾</td></tr>
+    </table>
+
+    <div class="block">
+      <div class="blocktag"><span class="when">19:05–19:10</span>開場</div>
+      <p style="margin:0">簡短歡迎、說明今晚流程(先讀 1–9 章、分三段導讀加討論)。可拋一句暖場提問帶入書中核心矛盾,例如:「如果有一顆藥丸,吃下去就能一直感到平靜快樂、完全沒有副作用,你會想吃嗎?」不用展開討論,留一個懸念即可,稍後議題二、三會回扣這個問題。</p>
+    </div>
+
+    <div class="block recap">
+      <div class="blocktag"><span class="when">19:15–19:25</span>導讀人分享 · 第一至三章</div>
+      <h4>世界國的體制登場</h4>
+      <ul>
+        <li>倫敦孵化與制約中心參觀:波卡諾夫斯基程序、瓶中培育、依未來階級調整化學與氧氣供給</li>
+        <li>睡眠教育(hypnopaedia)如何從小灌輸消費觀念與階級認同——每個階級都打從心底覺得自己的階級最好</li>
+        <li>蒙德總統向新生解釋舊社會為何被拋棄:家庭、宗教、藝術都被視為造成不穩定的根源</li>
+        <li>認識伯納·馬克思與莉娜·克朗,以及伯納在同儕之間顯得格格不入的線索</li>
+      </ul>
+    </div>
+
+    <div class="block discuss">
+      <div class="blocktag"><span class="when">19:25–19:40</span>議題一 · 被設計的慾望</div>
+      <h4>身份、消費與制約教育</h4>
+      <ul>
+        <li>睡眠教育讓每個階級都相信自己的階級最好,這跟我們今天被媒體、教育、家庭默默灌輸的價值觀,有什麼相似之處?</li>
+        <li>世界國用「消費」取代宗教與家庭作為凝聚社會的力量,你覺得這個交換合理嗎?</li>
+        <li>蒙德認為犧牲藝術、宗教是換取穩定的必要代價,你會怎麼回應他?</li>
+      </ul>
+    </div>
+
+    <div class="block recap">
+      <div class="blocktag"><span class="when">19:45–19:55</span>導讀人分享 · 第四至六章</div>
+      <h4>格格不入的兩個人</h4>
+      <ul>
+        <li>伯納因身材與地位自卑,對社會慣例(隨意性關係、soma)感到不自在,在同儕間顯得孤僻</li>
+        <li>認識赫姆霍茲·華生——物質與地位一帆風順,卻隱約感覺空虛,渴望寫出「真正重要的東西」</li>
+        <li>主任向伯納提起自己年輕時到「野蠻人保留區」旅行、與一名女子失散的往事,埋下伏筆</li>
+        <li>伯納取得許可,決定帶莉娜一起前往保留區旅行</li>
+      </ul>
+    </div>
+
+    <div class="block discuss">
+      <div class="blocktag"><span class="when">20:00–20:15</span>議題二 · 格格不入者</div>
+      <h4>個體性與從眾壓力</h4>
+      <ul>
+        <li>伯納的格格不入,更多是因為「身體上的缺陷」還是「內心真的不認同這個社會」?這兩者有差別嗎?</li>
+        <li>赫姆霍茲明明什麼都不缺,卻感覺空虛,你怎麼理解這種「一切完美卻若有所失」的狀態?</li>
+        <li>如果你活在一個「大家都覺得自己很快樂」的社會裡,而你隱約感覺哪裡不對勁,你會說出來,還是繼續假裝合群?</li>
+      </ul>
+    </div>
+
+    <div class="block recap">
+      <div class="blocktag"><span class="when">20:15–20:25</span>導讀人分享 · 第七至九章</div>
+      <h4>保留區與野蠻人</h4>
+      <ul>
+        <li>伯納與莉娜抵達新墨西哥的野蠻人保留區,親眼見到疾病、衰老、宗教儀式與家庭關係——這些在世界國都已被消滅或視為禁忌</li>
+        <li>遇見林達(多年前失蹤的女子)與她的兒子約翰,約翰在保留區長大卻因外貌與行為被排斥,靠一本莎士比亞全集自學閱讀與思考</li>
+        <li>伯納意識到林達是主任失散多年的伴侶、約翰是主任的親生兒子,決定帶兩人回倫敦</li>
+      </ul>
+    </div>
+
+    <div class="block discuss">
+      <div class="blocktag"><span class="when">20:25–20:40</span>議題三 · 文明與野蠻</div>
+      <h4>誰被認定「不夠格」</h4>
+      <ul>
+        <li>保留區裡的生老病死、家庭與宗教,在世界國眼中是「野蠻」,但對約翰而言卻是意義的來源,你怎麼看這種價值觀的落差?</li>
+        <li>約翰在保留區因外貌與出身被排斥,回到倫敦後又因「野蠻人」身份被當成奇觀——他有沒有真正「被接納」過的可能?</li>
+        <li>一個社會用什麼標準決定誰「不夠格」融入主流?這跟書中的種姓制度有什麼相通之處?</li>
+      </ul>
+    </div>
+
+    <div class="block">
+      <div class="blocktag"><span class="when">20:40–21:00</span>自由交流與收尾</div>
+      <p style="margin:0">開放聊天,也可以請每人用一句話說說今天聽到最有共鳴的一個觀點。提醒大家下次(10/16)進度是第 10–18 章。</p>
+    </div>
+  </section>
+
+  <section id="day2" class="day2">
+    <h3 class="day"><span>第二場 · 第 10–18 章</span><span class="datebadge">10/16</span></h3>
+
+    <table class="schedule">
+      <tr><th>時間</th><th>環節</th></tr>
+      <tr><td class="time">18:50–19:00</td><td>入場</td></tr>
+      <tr><td class="time">19:05–19:10</td><td>開場</td></tr>
+      <tr><td class="time">19:15–19:25</td><td>導讀人分享:第十至十二章</td></tr>
+      <tr><td class="time">19:25–19:40</td><td>議題四討論</td></tr>
+      <tr><td class="time">19:45–19:55</td><td>導讀人分享:第十三至十五章</td></tr>
+      <tr class="break"><td class="time">19:55–20:00</td><td>中場休息</td></tr>
+      <tr><td class="time">20:00–20:15</td><td>議題五討論</td></tr>
+      <tr><td class="time">20:15–20:25</td><td>導讀人分享:第十六至十八章</td></tr>
+      <tr><td class="time">20:25–20:40</td><td>議題六討論</td></tr>
+      <tr><td class="time">20:40–21:00</td><td>自由交流與收尾</td></tr>
+    </table>
+
+    <div class="block">
+      <div class="blocktag"><span class="when">19:05–19:10</span>開場</div>
+      <p style="margin:0">簡短回顧上次進度收在哪(林達與約翰剛決定跟伯納回倫敦),說明今晚會讀完全書,进入故事的高潮與結局。</p>
+    </div>
+
+    <div class="block recap">
+      <div class="blocktag"><span class="when">19:15–19:25</span>導讀人分享 · 第十至十二章</div>
+      <h4>從奇觀到明星</h4>
+      <ul>
+        <li>伯納在公開場合揭露主任是約翰生父的真相,主任顏面盡失、被迫辭職,伯納一夕成為焦點人物</li>
+        <li>約翰(「野蠻人」)成為倫敦社交圈爭相邀約的奇觀與明星,伯納也跟著爆紅、性格開始改變</li>
+        <li>約翰第一次接觸「感官電影」(feelies)與集體宗教儀式等世界國的娛樂與信仰形式,感到強烈不適與困惑</li>
+        <li>約翰與莉娜之間開始產生情愫,但兩人對愛與親密關係的理解南轅北轍</li>
+      </ul>
+    </div>
+
+    <div class="block discuss">
+      <div class="blocktag"><span class="when">19:25–19:40</span>議題四 · 表演與真實</div>
+      <h4>名氣、奇觀與被觀看的痛苦</h4>
+      <ul>
+        <li>約翰一開始抗拒被當成奇觀展示,卻也在某種程度上享受關注,你怎麼看這種矛盾?</li>
+        <li>伯納一走紅就性格丕變、開始瞧不起以前對他好的人,是他本性改變了,還是社會地位本來就決定了一個人怎麼被對待?</li>
+        <li>感官電影讓人直接「感受」劇情而不用思考,這跟今天的短影音、沉浸式娛樂有哪些呼應?</li>
+      </ul>
+    </div>
+
+    <div class="block recap">
+      <div class="blocktag"><span class="when">19:45–19:55</span>導讀人分享 · 第十三至十五章</div>
+      <h4>錯過的愛,無人哀悼的死</h4>
+      <ul>
+        <li>約翰用他從莎士比亞學來的浪漫愛情觀念看待莉娜,莉娜卻只理解世界國式、直接而輕巧的親密關係,兩人多次錯過彼此、甚至爆發衝突</li>
+        <li>林達長期服用 soma 導致健康急速惡化,住進醫院等死;約翰在她臨終前趕到,卻發現這裡沒有人在乎死亡</li>
+        <li>林達過世後,約翰在醫院外對著一群前來領取死亡配給 soma 的孩童情緒崩潰,試圖阻止他們,引發騷動</li>
+      </ul>
+    </div>
+
+    <div class="block discuss">
+      <div class="blocktag"><span class="when">20:00–20:15</span>議題五 · 快樂的代價</div>
+      <h4>愛、成癮與逃避痛苦</h4>
+      <ul>
+        <li>約翰用莎士比亞式的浪漫來愛莉娜,莉娜卻用世界國式的直接來愛約翰——這場錯過,問題出在誰身上,還是根本沒有誰對誰錯?</li>
+        <li>林達靠 soma 逃避了保留區的痛苦回憶,卻也因此失去了健康與清醒的晚年,如果是你,會做一樣的選擇嗎?</li>
+        <li>世界國讓孩子從小對死亡沒有恐懼、也沒有哀悼,這樣「不害怕死亡」,究竟是解脫還是喪失了什麼重要的東西?</li>
+      </ul>
+    </div>
+
+    <div class="block recap">
+      <div class="blocktag"><span class="when">20:15–20:25</span>導讀人分享 · 第十六至十八章</div>
+      <h4>與蒙德的對話,以及結局</h4>
+      <ul>
+        <li>約翰、伯納、赫姆霍茲被帶到世界統治者蒙德面前,展開全書最核心的一場對話:蒙德坦承自己也曾質疑體制,但選擇了穩定而放棄藝術、宗教與真正的自由</li>
+        <li>約翰主張人有「不快樂的權利」——生病、恐懼、痛苦、罪惡感都是人之所以為人的一部分;蒙德認為這些代價太高,不值得為此犧牲穩定</li>
+        <li>伯納與赫姆霍茲被判「流放」到偏遠島嶼;約翰選擇獨自隱居,試圖透過禁慾與自我懲罰淨化自己,最終仍無法逃離世人的獵奇目光,故事以悲劇收場</li>
+      </ul>
+    </div>
+
+    <div class="block discuss">
+      <div class="blocktag"><span class="when">20:25–20:40</span>議題六 · 穩定 vs 自由</div>
+      <h4>不快樂的權利</h4>
+      <ul>
+        <li>蒙德說自己也曾動搖過,最後選擇了穩定而不是自由,你覺得他後悔嗎?如果是你,會做一樣的選擇嗎?</li>
+        <li>約翰主張「不快樂的權利」,包括生病、恐懼、罪惡感,你認同這些真的是人之所以為人不可或缺的部分嗎?</li>
+        <li>故事以悲劇收場,如果約翰願意做出哪怕一點點妥協,結局有沒有可能不一樣?這對現實中面對體制的我們,有什麼啟發?</li>
+      </ul>
+    </div>
+
+    <div class="block">
+      <div class="blocktag"><span class="when">20:40–21:00</span>自由交流與收尾</div>
+      <p style="margin:0">請每人用一句話總結這本書留給自己最深的一個念頭,也可以聊聊「這本書會讓你想在生活中做出什麼微小的改變」。若有下次聚會或選書計畫,趁現在收集提名。</p>
+    </div>
+  </section>
+
+  <section id="tips">
+    <h2><span class="num">02</span>主持人小提醒</h2>
+    <ul class="tip-list">
+      <li><b>先跟導讀人對好重點</b>聚會前簡單確認一下導讀人準備分享的範圍,避免導讀時段內容跟等一下的討論問題重複或落差太大。</li>
+      <li><b>導讀時段只做三件事</b>報時、介紹導讀人上場、導讀結束後銜接。不需要補充劇情或發表自己的看法,把舞台留給導讀人。</li>
+      <li><b>銜接可以這樣說</b>「謝謝 OOO 的分享,那我們就針對剛剛這幾章,來聊聊今天的第一個題目——」一句話帶過就好,不用再重述劇情。</li>
+      <li><b>保持中立</b>尤其在種姓制度、優生學這類爭議性主題上,主持人拋問題、串連發言,不急著給出自己的立場。</li>
+      <li><b>刻意留白</b>問完問題後停頓 5–10 秒再點名,讓比較安靜的成員也有機會先在腦中組織想法。</li>
+      <li><b>時間到了就往下走</b>15 分鐘的討論很容易意猶未盡,若還有很多人想講,可以記下來留到最後「自由交流」時段,而不是壓縮下一段導讀的時間。</li>
+    </ul>
+  </section>
+
+  <section id="further">
+    <h2><span class="num">03</span>延伸閱讀與資源</h2>
+    <ul class="read-list">
+      <li>喬治·歐威爾《1984》——另一種極權想像:用恐懼而非快樂統治</li>
+      <li>葉夫根尼·薩米爾欽《我們》——公認影響《美麗新世界》與《1984》的早期反烏托邦經典</li>
+      <li>赫胥黎《重返美麗新世界》(Brave New World Revisited)——作者本人於 1958 年回頭檢視自己預言的非虛構隨筆集</li>
+    </ul>
+  </section>
+
+  <footer>《美麗新世界》讀書會 · 主持人手冊 · 10/2 + 10/16 兩場流程</footer>
+</div>
+</body>
+</html>
